@@ -7,3 +7,5 @@ logs
 .vscode/
 .idea/
 coverage/
+package-lock.json
+package.json
