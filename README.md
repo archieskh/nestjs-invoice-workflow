@@ -47,6 +47,46 @@ $ npm run start:dev
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-
-
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+Done 
+- Queue Manager (RabbitMQ)
+- Basic producer/consumer setup using RabbitMQ.
+- Queue creation and message publishing from API endpoints.
+- Coordinator Service
+- Integrated with workflow start endpoint (POST /workflow/start-invoice).
+- Triggers invoice workflow with provided customer ID.
+- Database Integration
+- PostgreSQL setup for task states and logs.
+- ORM integration (Sequelize).
+- Task Queuing
+- Trigger tasks via HTTP endpoint.
+- Tasks pushed to RabbitMQ for processing by workers.
+- Basic Worker Node
+- Consumes tasks from RabbitMQ and processes them.
+- Simple logging of task execution in DB.
+- Invoice Workflow (Partial)
+- Code structure in place for retrieving orders and processing invoices (mocked/stubbed logic).
+
+Pending
+- Retry & Compensation Logic
+    automated retry for failed tasks.
+    No compensation for partial failures.
+
+- Task Scheduling
+- End-to-End Invoice Workflow
+- Monitoring & Observability
+- No real-time failure alerts.
+
+
+Endpoints used
+POST /workflow/start-invoice
+{
+  "customerId": "1517"
+}
+
+In a full implementation, need to add
+
+GET /tasks → List tasks and statuses (from PostgreSQL)
+GET /tasks/:id → View a single task’s details
+POST /workflow/schedule → Schedule workflows for later execution
